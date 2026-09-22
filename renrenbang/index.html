@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="人人帮 - 本地生活服务互助平台，提供上门维修、家政保洁、跑腿代办等便民服务。通过实名认证的邻里互助网络，让您足不出户即可解决生活难题，安全高效，值得信赖。">
+    <meta name="keywords" content="人人帮,本地服务,上门维修,家政保洁,跑腿代办,邻里互助,便民服务">
+    <title>人人帮-本地生活服务互助平台与便民指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --secondary-color: #6c757d;
+            --accent-color: #ffc107;
+            --bg-light: #f8f9fa;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            background-color: var(--bg-light);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Service Categories */
+        .services {
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            height: 200px;
+            group: ;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: var(--white);
+        }
+
+        .category-overlay h3 {
+            font-size: 1.2rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background-color: #e0e0e0;
+            z-index: -1;
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        /* Safety & Trust */
+        .safety {
+            padding: 80px 0;
+            background-color: #f1f3f5;
+        }
+
+        .safety-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .safety-text {
+            flex: 1;
+        }
+
+        .safety-list {
+            margin-top: 20px;
+        }
+
+        .safety-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .safety-icon {
+            color: #28a745;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-gray);
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu, .nav-actions {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .step::after {
+                display: none;
+            }
+
+            .safety-content {
+                flex-direction: column;
+            }
+
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>人人帮</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#services">服务分类</a></li>
+                    <li><a href="#how-it-works">互助流程</a></li>
+                    <li><a href="#safety">安全保障</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">登录</a>
+                <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">免费注册</a>
+            </div>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>身边的互助力量，<br>解决您的生活难题</h1>
+                <p>人人帮是一个基于地理位置的邻里互助服务平台。无论是家电维修、家政保洁还是紧急跑腿，都能在这里找到靠谱的帮手，让生活更轻松。</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#services" class="btn btn-primary">发布需求</a>
+                    <a href="#how-it-works" class="btn btn-outline">了解如何操作</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/help/600/400" alt="邻里互助示意图" width="600" height="400">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>邻里互助</h3>
+                    <p>连接身边的邻居，基于信任的互助模式，让您触手可及的获得帮助。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>实名认证</h3>
+                    <p>所有服务提供者均需通过严格的实名认证与背景调查，保障交易安全。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>快速响应</h3>
+                    <p>基于LBS定位，附近的服务人员第一时间响应您的求助需求。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>价格透明</h3>
+                    <p>服务前确认价格，无隐形消费，支持多种支付方式，交易全程可追溯。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>热门服务分类</h2>
+                <p>无论您需要什么帮助，这里都有专业的人为您提供支持</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://picsum.photos/seed/repair/400/300" alt="上门维修">
+                    <div class="category-overlay">
+                        <h3>上门维修</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/seed/cleaning/400/300" alt="家政保洁">
+                    <div class="category-overlay">
+                        <h3>家政保洁</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/seed/delivery/400/300" alt="跑腿代办">
+                    <div class="category-overlay">
+                        <h3>跑腿代办</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/seed/elderly/400/300" alt="陪诊陪护">
+                    <div class="category-overlay">
+                        <h3>陪诊陪护</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/seed/transport/400/300" alt="搬运服务">
+                    <div class="category-overlay">
+                        <h3>搬运服务</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://picsum.photos/seed/crafts/400/300" alt="生活技能">
+                    <div class="category-overlay">
+                        <h3>生活技能</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>互助流程</h2>
+                <p>简单三步，轻松解决问题</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>发布需求</h3>
+                    <p>在APP或网页上简单描述您需要的服务内容和时间，系统自动匹配附近帮手。</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>确认帮手</h3>
+                    <p>查看帮手的服务评价、接单速度，选择最合适的人员，一键下单。</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>享受服务</h3>
+                    <p>服务完成后，在线评价并支付，整个过程省心省力。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety & Trust -->
+    <section id="safety" class="safety">
+        <div class="container safety-content">
+            <div class="safety-image">
+                <img src="https://picsum.photos/seed/lock/600/400" alt="安全保障体系" style="max-width: 100%; border-radius: var(--border-radius);">
+            </div>
+            <div class="safety-text">
+                <h2>多重保障，安心托付</h2>
+                <p style="margin-top: 15px; color: var(--text-gray);">
+                    人人帮致力于打造最安全的互助环境。我们通过技术手段和人工审核，确保每一位服务者的可靠性，让您在享受便利的同时无后顾之忧。
+                </p>
+                <div class="safety-list">
+                    <div class="safety-item">
+                        <span class="safety-icon">✓</span>
+                        <div>
+                            <strong>严格实名认证</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-gray);">身份证、人脸识别双重验证</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <span class="safety-icon">✓</span>
+                        <div>
+                            <strong>服务保险覆盖</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-gray);">为每笔交易购买意外保险</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <span class="safety-icon">✓</span>
+                        <div>
+                            <strong>纠纷快速仲裁</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-gray);">专业客服团队介入处理争议</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>常见问题</h2>
+                <p>关于人人帮的疑问解答</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">如何成为人人帮的帮手？ <span>+</span></div>
+                    <div class="faq-answer">
+                        <p>您只需下载人人帮APP，注册账号并进行实名认证、服务技能认证以及背景调查。审核通过后，您就可以发布自己的服务并接单了。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如果服务过程中出现问题怎么办？ <span>+</span></div>
+                    <div class="faq-answer">
+                        <p>如果在服务过程中发生任何纠纷或问题，您可以立即联系平台客服。平台会根据双方描述和系统证据进行公正仲裁，并协助解决。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">价格是如何制定的？ <span>+</span></div>
+                    <div class="faq-answer">
+                        <p>价格由服务提供者根据市场行情和自身情况自主设定，平台提供参考建议。您在下单前可以与服务者沟通确认具体费用，确保价格透明。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">我可以随时取消订单吗？ <span>+</span></div>
+                    <div class="faq-answer">
+                        <p>在服务人员到达之前，您通常可以免费取消订单。一旦服务开始，取消可能会产生一定费用，具体请参考订单详情页的取消政策。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px; color: #fff;">
+                        <span>人人帮</span>
+                    </div>
+                    <p style="color: #bdc3c7; font-size: 0.9rem; line-height: 1.8;">
+                        人人帮，连接你我，温暖邻里。致力于构建最便捷、最安全的本地生活互助社区。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务指南</h4>
+                    <ul>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">安全提示</a></li>
+                        <li><a href="#">商家入驻</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>客服电话：400-123-4567</li>
+                        <li>工作时间：9:00 - 21:00</li>
+                        <li>电子邮箱：support@renrenbang.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 人人帮服务平台 版权所有
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Mobile Menu Toggle (Simple implementation)
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            const navActions = document.querySelector('.nav-actions');
+
+            mobileBtn.addEventListener('click', () => {
+                const isFlex = navMenu.style.display === 'flex';
+                if (isFlex) {
+                    navMenu.style.display = 'none';
+                    navActions.style.display = 'none';
+                } else {
+                    navMenu.style.display = 'flex';
+                    navMenu.style.flexDirection = 'column';
+                    navMenu.style.position = 'absolute';
+                    navMenu.style.top = '70px';
+                    navMenu.style.left = '0';
+                    navMenu.style.width = '100%';
+                    navMenu.style.background = 'white';
+                    navMenu.style.padding = '20px';
+                    navMenu.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                    
+                    navActions.style.display = 'flex';
+                    navActions.style.position = 'absolute';
+                    navActions.style.top = '300px'; // Adjust based on menu height
+                    navActions.style.left = '20px';
+                    navActions.style.right = '20px';
+                    navActions.style.flexDirection = 'column';
+                }
+            });
+        });
+    </script>
+</body>
+                      </html>
