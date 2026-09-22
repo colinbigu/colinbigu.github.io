@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超前预报-精准气象与灾害预警信息服务平台</title>
+    <meta name="description" content="提供全球范围内的超前天气预报、极端气象灾害预警、地震海啸监测及地质灾害风险查询服务。致力于通过多源数据融合与AI分析，为公众、交通、农业及应急管理部门提供准确的前瞻性信息支持。">
+    <meta name="keywords" content="超前预报,天气预报,灾害预警,气象监测,地质灾害,极端天气,台风路径,地震预警">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004c99;
+            --accent-color: #ff9900;
+            --danger-color: #d32f2f;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #f4f7f9;
+            --bg-card: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+            color: white;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 12px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .hero-visual {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .weather-dashboard {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            padding: 20px;
+            color: white;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .dashboard-header h4 {
+            font-size: 16px;
+        }
+
+        .current-location {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .main-temp {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .weather-desc {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .forecast-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .forecast-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 5px;
+            border-radius: 4px;
+        }
+
+        .forecast-item .day {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .forecast-item .icon {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .forecast-item .temp {
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Alert Cards */
+        .alert-section {
+            margin-bottom: 50px;
+        }
+
+        .alert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .alert-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--danger-color);
+            transition: var(--transition);
+        }
+
+        .alert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .alert-card.warning {
+            border-left-color: #ff9800;
+        }
+
+        .alert-card.info {
+            border-left-color: var(--primary-color);
+        }
+
+        .alert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .alert-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .alert-time {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .alert-desc {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .alert-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Map & Analysis Section */
+        .analysis-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .map-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-placeholder {
+            flex: 1;
+            background: #e9ecef;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .analysis-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .analysis-item {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .analysis-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .analysis-content h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .analysis-content p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Guide & FAQ */
+        .guide-section {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .guide-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .guide-item:hover {
+            border-color: var(--primary-color);
+            background-color: #f8fbff;
+        }
+
+        .guide-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .guide-item h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .guide-item p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .faq-section {
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            margin-bottom: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 20px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            font-size: 20px;
+        }
+
+        .faq-item.active .faq-question::before {
+            content: '+';
+            font-size: 20px;
+        }
+
+        .faq-question::before, .faq-question::after {
+            content: '';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: #999;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .analysis-section {
+                grid-template-columns: 1fr;
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-text h1 {
+                font-size: 28px;
+            }
+            .forecast-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
+                <span>超前预报</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">气象预警</a>
+                <a href="#">地震监测</a>
+                <a href="#">灾害地图</a>
+                <a href="#">数据服务</a>
+                <a href="#">关于我们</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">订阅推送</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>洞察未来，提前规划安全生活</h1>
+                <p>依托全球气象卫星网络与AI深度学习模型，为您提供72小时精细化超前天气预报及极端灾害预警服务，让风险无处遁形。</p>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-primary" style="padding: 10px 24px; font-size: 16px;">开始查询</button>
+                    <button class="btn btn-outline" style="padding: 10px 24px; font-size: 16px; border-color: white; color: white;">了解原理</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>99.8%</h3>
+                        <p>灾害预警准确率</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24h</h3>
+                        <p>超前预警时效</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10亿+</h3>
+                        <p>累计服务用户</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="weather-dashboard">
+                    <div class="dashboard-header">
+                        <h4>实时监测中心</h4>
+                        <span class="current-location">📍 北京市, 朝阳区</span>
+                    </div>
+                    <div class="main-temp">24°C</div>
+                    <div class="weather-desc">多云转晴 · 预计未来2小时降雨概率 10%</div>
+                    <div class="forecast-grid">
+                        <div class="forecast-item">
+                            <div class="day">今天</div>
+                            <div class="icon">⛅</div>
+                            <div class="temp">24°/18°</div>
+                        </div>
+                        <div class="forecast-item">
+                            <div class="day">明天</div>
+                            <div class="icon">☀️</div>
+                            <div class="temp">26°/19°</div>
+                        </div>
+                        <div class="forecast-item">
+                            <div class="day">周三</div>
+                            <div class="icon">🌧️</div>
+                            <div class="temp">21°/17°</div>
+                        </div>
+                        <div class="forecast-item">
+                            <div class="day">周四</div>
+                            <div class="icon">☁️</div>
+                            <div class="temp">22°/16°</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- 紧急预警板块 -->
+        <section class="alert-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>当前重点预警</h2>
+                    <p>实时更新全国范围内的气象与地质灾害预警信息</p>
+                </div>
+                <a href="#" class="view-all">查看全部预警 &rarr;</a>
+            </div>
+            <div class="alert-grid">
+                <article class="alert-card warning">
+                    <div class="alert-header">
+                        <span class="alert-title">暴雨黄色预警</span>
+                        <span class="alert-time">10分钟前更新</span>
+                    </div>
+                    <p class="alert-desc">预计未来6小时内，长江中下游部分地区降雨量将达50毫米以上，请注意防范山洪、滑坡等次生灾害。</p>
+                    <div class="alert-meta">
+                        <span>📍 受影响区域：江浙沪皖</span>
+                        <span>⏰ 预警结束时间：14:00</span>
+                    </div>
+                </article>
+                <article class="alert-card warning">
+                    <div class="alert-header">
+                        <span class="alert-title">台风蓝色预警</span>
+                        <span class="alert-time">30分钟前更新</span>
+                    </div>
+                    <p class="alert-desc">今年第12号台风“海葵”预计将于今日夜间登陆东南沿海，请沿海地区加强防风防潮准备。</p>
+                    <div class="alert-meta">
+                        <span>📍 中心位置：距离台湾约300km</span>
+                        <span>⚠️ 风力等级：13级</span>
+                    </div>
+                </article>
+                <article class="alert-card info">
+                    <div class="alert-header">
+                        <span class="alert-title">地质灾害气象风险提示</span>
+                        <span class="alert-time">1小时前更新</span>
+                    </div>
+                    <p class="alert-desc">受连续降雨影响，陕南、川北等地地质灾害风险较高，建议暂停户外作业，远离山区沟谷。</p>
+                    <div class="alert-meta">
+                        <span>📍 风险等级：较高</span>
+                        <span>📅 持续时间：48小时</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 数据分析与地图板块 -->
+        <section class="analysis-section">
+            <article class="map-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2>全国灾害风险趋势图</h2>
+                        <p>多源数据融合分析，可视化展示未来72小时风险分布</p>
+                    </div>
+                </div>
+                <div class="map-placeholder">
+                    <div class="map-overlay">
+                        <strong>数据加载中...</strong>
+                    </div>
+                    <!-- 这里是地图占位符，实际开发会嵌入地图API -->
+                    <div style="text-align: center;">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                        <p>交互式地图区域</p>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="analysis-list">
+                <div class="section-title">
+                    <h2>智能分析洞察</h2>
+                    <p>基于大数据的趋势预测与建议</p>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+                    </div>
+                    <div class="analysis-content">
+                        <h4>未来24小时气温波动</h4>
+                        <p>北方地区受冷空气影响，早晚温差将加大至12°C以上，请注意增减衣物。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="analysis-content">
+                        <h4>交通出行建议</h4>
+                        <p>受降雨影响，G4京港澳高速部分路段出现拥堵，建议绕行国道或错峰出行。</p>
+                    </div>
+                </div>
+                <div class="analysis-item">
+                    <div class="analysis-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <div class="analysis-content">
+                        <h4>农业种植指导</h4>
+                        <p>南方水稻产区需注意防范“烂根”现象，建议及时排水，并追施速效氮肥。</p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- 使用指南 -->
+        <section class="guide-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>如何利用超前预报服务</h2>
+                    <p>专业工具帮助您更有效地规避风险</p>
+                </div>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <div class="guide-icon">📍</div>
+                    <h3>精准定位预警</h3>
+                    <p>输入您所在的具体位置，系统将自动推送周边3公里内的实时预警信息。</p>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">📅</div>
+                    <h3>历史回溯查询</h3>
+                    <p>查看过去3年内的灾害记录，分析区域气候规律，为长期规划提供数据支持。</p>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">📱</div>
+                    <h3>多端消息推送</h3>
+                    <p>支持微信公众号、短信、APP弹窗等多种方式接收紧急警报，确保信息触达。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">什么是“超前预报”？</div>
+                    <div class="faq-answer">
+                        超前预报是指利用气象模型、卫星遥感、物联网传感器等多源数据，结合人工智能算法，对尚未发生的自然灾害（如暴雨、台风、地震前兆）进行提前72小时甚至更长时间的预测和预警服务。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">预警信息的准确率如何？</div>
+                    <div class="faq-answer">
+                        本平台采用国家级气象局标准算法，结合全球气象大数据，经过多年验证，极端灾害预警准确率可达99.8%。但需注意，气象预测本身存在不确定性，请以官方实时发布信息为准。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何订阅特定区域的预警？</div>
+                    <div class="faq-answer">
+                        您可以在“我的订阅”页面，勾选您关心的城市、区域或灾害类型（如暴雨、雷电、大风），系统将根据您的设置，在事件发生前通过短信或APP推送通知。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>超前预报</h3>
+                <p>致力于构建全球领先的灾害预警与气象信息服务体系，守护每一个家庭的平安。</p>
+            </div>
+            <div class="footer-col">
+                <h4>产品服务</h4>
+                <ul>
+                    <li><a href="#">天气预报查询</a></li>
+                    <li><a href="#">灾害风险地图</a></li>
+                    <li><a href="#">API数据接口</a></li>
+                    <li><a href="#">企业级解决方案</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">使用指南</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">官方微博</a></li>
+                    <li><a href="#">用户反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 超前预报服务平台 版权所有 | 京ICP备12345678号</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
