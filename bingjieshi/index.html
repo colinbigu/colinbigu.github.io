@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="冰结师 - 专业解析冰结师职业定位、技能加点、装备搭配与实战技巧。提供从新手入门到精通进阶的全面指南，助您在冒险中掌控极寒之力。">
+    <meta name="keywords" content="冰结师,地下城与勇士,职业攻略,DNF,技能加点,装备搭配">
+    <title>冰结师 - 职业深度解析与实战进阶指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00f2ff;
+            --primary-dark: #00a8b3;
+            --secondary-color: #0f172a;
+            --accent-color: #ff0055;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --bg-body: #020617;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(148, 163, 184, 0.1);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-glow: 0 0 20px rgba(0, 242, 255, 0.15);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.05) 0%, transparent 20%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: rgba(0, 242, 255, 0.3);
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Content Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        /* Left Column */
+        .article-section {
+            margin-bottom: 4rem;
+        }
+
+        .article-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content strong {
+            color: var(--primary-color);
+        }
+
+        .guide-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .guide-item {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s;
+        }
+
+        .guide-item:hover {
+            transform: translateX(5px);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .guide-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .guide-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .guide-arrow {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* Right Column */
+        aside {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .widget {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 18px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .skill-list li {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .skill-rank {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            background: rgba(0, 242, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .tip-box {
+            background: rgba(255, 0, 85, 0.05);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #ffccd5;
+        }
+
+        /* Equipment Section */
+        .equipment-section {
+            background: linear-gradient(to bottom, var(--bg-body), #0b1120);
+            padding: 5rem 0;
+        }
+
+        .equip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .equip-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .equip-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .equip-header {
+            height: 120px;
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .equip-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        .equip-body {
+            padding: 1.5rem;
+        }
+
+        .equip-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .equip-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .stat-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none; /* Simplified for mobile demo */
+            }
+
+            .nav-wrapper {
+                justify-content: center;
+            }
+            
+            .nav-wrapper .cta-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>❄️</span> 冰结师指南
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#intro" class="active">职业介绍</a></li>
+                    <li><a href="#skills">技能加点</a></li>
+                    <li><a href="#build">流派搭配</a></li>
+                    <li><a href="#equipment">装备推荐</a></li>
+                </ul>
+            </nav>
+            <a href="#build" class="cta-btn">查看加点方案</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-tags">
+                    <span class="tag">魔法师</span>
+                    <span class="tag">远程输出</span>
+                    <span class="tag">控制型</span>
+                </div>
+                <h1>掌控极寒之力的<br><span class="highlight">冰结师</span></h1>
+                <p>冰结师是魔法师转职后的分支，利用冰晶凝聚成武器，不仅能造成高额魔法伤害，还能通过冰冻效果掌控战场节奏。无论是爆发输出还是持续控制，都是团队中不可或缺的核心角色。</p>
+                <a href="#skills" class="cta-btn" style="padding: 0.8rem 2rem; font-size: 1rem;">开始进阶之路</a>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">高</span>
+                        <span class="stat-label">爆发伤害</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">强</span>
+                        <span class="stat-label">群体控制</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">远</span>
+                        <span class="stat-label">安全输出距离</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">易</span>
+                        <span class="stat-label">上手操作</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="container content-grid">
+            <div class="main-column">
+                <article class="article-section" id="intro">
+                    <h2>职业定位与核心机制</h2>
+                    <div class="article-content">
+                        <p>冰结师属于魔法师中的<span class="highlight">控制型</span>职业。与元素师追求极致的元素伤害不同，冰结师更注重利用冰系技能的冻结效果来改变战场局势。其核心机制在于“冰晶”，通过凝聚冰晶形成冰矛、冰枪、冰墙等形态，既能作为攻击手段，也能作为防御工事。</p>
+                        <p><strong>战斗风格：</strong>冰结师通常站在中远距离进行输出，技能范围大且具有击退、束缚效果。在面对密集怪物群时，冰结师能够利用“绝对零度”等技能瞬间清场，在BOSS战中则能通过控制技能为队友创造宝贵的输出窗口。</p>
+                        <p><strong>职业优势：</strong></p>
+                        <ul class="guide-list">
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>控制能力极强</h3>
+                                    <p>大量技能带有冰冻、减速或击退效果，极大降低团战难度。</p>
+                                </div>
+                                <div class="guide-arrow">➔</div>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>技能形态优美</h3>
+                                    <p>技能释放流畅，视觉效果震撼，操作手感极佳。</p>
+                                </div>
+                                <div class="guide-arrow">➔</div>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>输出环境安全</h3>
+                                    <p>远程攻击距离让冰结师能在怪群中保持相对安全的位置。</p>
+                                </div>
+                                <div class="guide-arrow">➔</div>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="article-section" id="skills">
+                    <h2>核心技能与加点思路</h2>
+                    <div class="article-content">
+                        <p>加点主要分为<span class="highlight">爆发流</span>和<span class="highlight">控制流</span>两种。爆发流侧重于提升主要输出技能的等级，追求瞬间秒杀；控制流则侧重于小技能的等级，保证全程控场。</p>
+                        <h3>核心必满技能：</h3>
+                        <ul class="guide-list">
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>极寒冰矛</h3>
+                                    <p>主要输出技能，伤害占比高，建议加满。</p>
+                                </div>
+                                <span class="skill-rank">核心</span>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>绝对零度</h3>
+                                    <p>强力聚怪技能，不仅伤害高，还能造成大量冰冻。</p>
+                                </div>
+                                <span class="skill-rank">核心</span>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>冰霜之径</h3>
+                                    <p>位移技能，增加灵活性，建议至少加1点。</p>
+                                </div>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-info">
+                                    <h3>冰龙之息</h3>
+                                    <p>强力单控技能，对BOSS战非常关键。</p>
+                                </div>
+                                <span class="skill-rank">必满</span>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <aside>
+                <div class="widget">
+                    <h3 class="widget-title">加点推荐</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span class="skill-name">冰魄之枪</span>
+                            <span class="skill-rank">满</span>
+                        </li>
+                        <li>
+                            <span class="skill-name">绝对零度</span>
+                            <span class="skill-rank">满</span>
+                        </li>
+                        <li>
+                            <span class="skill-name">冰龙之息</span>
+                            <span class="skill-rank">满</span>
+                        </li>
+                        <li>
+                            <span class="skill-name">冰魄旋枪</span>
+                            <span class="skill-rank">1/满</span>
+                        </li>
+                        <li>
+                            <span class="skill-name">冰墙</span>
+                            <span class="skill-rank">1</span>
+                        </li>
+                        <li>
+                            <span class="skill-name">冰霜之径</span>
+                            <span class="skill-rank">1</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">新手贴士</h3>
+                    <div class="tip-box">
+                        <p>冰结师在释放“冰魄之枪”时，可以通过后跳取消后摇动作，从而加快技能循环速度。此外，保持与怪物的距离是生存的关键。</p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Equipment Section -->
+        <section class="equipment-section">
+            <div class="container">
+                <h2 class="section-title">装备搭配指南</h2>
+                <p class="section-subtitle">从平民过渡到毕业装备的全方位推荐</p>
+                
+                <div class="equip-grid">
+                    <div class="equip-card">
+                        <div class="equip-header">
+                            <span class="equip-icon">⚔️</span>
+                        </div>
+                        <div class="equip-body">
+                            <h3 class="equip-name">冰霜之息</h3>
+                            <p class="equip-desc">增加冰系技能攻击力，并使技能附加冰冻几率。</p>
+                            <div class="stat-bar"><div class="stat-fill" style="width: 90%;"></div></div>
+                            <div class="stat-label">适用阶段：主流毕业装备</div>
+                        </div>
+                    </div>
+
+                    <div class="equip-card">
+                        <div class="equip-header">
+                            <span class="equip-icon">🛡️</span>
+                        </div>
+                        <div class="equip-body">
+                            <h3 class="equip-name">冰魄护手</h3>
+                            <p class="equip-desc">提升技能范围与冷却缩减，增强控制时长。</p>
+                            <div class="stat-bar"><div class="stat-fill" style="width: 75%;"></div></div>
+                            <div class="stat-label">适用阶段：中后期过渡</div>
+                        </div>
+                    </div>
+
+                    <div class="equip-card">
+                        <div class="equip-header">
+                            <span class="equip-icon">💍</span>
+                        </div>
+                        <div class="equip-body">
+                            <h3 class="equip-name">冰霜之心</h3>
+                            <p class="equip-desc">增加智力与冰系技能伤害，提升爆发能力。</p>
+                            <div class="stat-bar"><div class="stat-fill" style="width: 85%;"></div></div>
+                            <div class="stat-label">适用阶段：平民推荐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于冰结师</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                        本站致力于为地下城与勇士玩家提供最全面、最及时的冰结师职业攻略、技能解析及装备搭配建议。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#intro">职业介绍</a></li>
+                        <li><a href="#skills">技能加点</a></li>
+                        <li><a href="#build">流派选择</a></li>
+                        <li><a href="#equipment">装备推荐</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关链接</h4>
+                    <ul>
+                        <li><a href="#">游戏官网</a></li>
+                        <li><a href="#">技能模拟器</a></li>
+                        <li><a href="#">社区讨论</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 冰结师指南站. All rights reserved. 本页面仅供攻略参考，游戏版权归其开发商所有。
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
