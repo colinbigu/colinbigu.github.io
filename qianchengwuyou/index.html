@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前程无忧武汉分公司-武汉本地化求职招聘服务平台</title>
+    <meta name="description" content="前程无忧武汉分公司提供专业的本地化人力资源服务，涵盖武汉地区职位推荐、企业招聘解决方案、职场培训及人力资源咨询。连接企业与人才，助力武汉人才发展。">
+    <meta name="keywords" content="前程无忧武汉分公司,武汉招聘,武汉人才网,前程无忧武汉,企业招聘,猎头服务,武汉人力资源">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #0056b3;
+            --accent-color: #ff9900;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            padding-top: var(--header-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #004080 100%);
+            color: var(--white);
+            padding: 80px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 10px;
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Service Features */
+        .features {
+            padding: 60px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            background: var(--bg-light);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Job Categories */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .category-item {
+            background: var(--white);
+            padding: 20px 10px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            border: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .category-item:hover {
+            border-color: var(--primary-color);
+            background: #f0f7ff;
+        }
+
+        .category-item img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 10px;
+            object-fit: contain;
+        }
+
+        .category-item span {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        .stat-list {
+            margin-top: 30px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat-item h4 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .header-actions .btn {
+                padding: 6px 15px;
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-list {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>前程无忧武汉分公司</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#">首页</a>
+                <a href="#">职位搜索</a>
+                <a href="#">企业招聘</a>
+                <a href="#">人才测评</a>
+                <a href="#">职场资讯</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">注册</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>连接武汉人才与未来机遇</h1>
+                <p>作为前程无忧在华中地区的重要布局，我们致力于为武汉本地企业提供一站式人力资源解决方案，帮助数百万求职者找到理想工作。</p>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索职位、公司或关键词...">
+                    <button type="button">搜索</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>全方位人力资源服务</h2>
+                    <p>依托集团强大资源，提供从招聘到培训的全生命周期服务</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>海量职位库</h3>
+                        <p>覆盖武汉各行业优质企业，每日更新数千个职位，满足不同求职需求。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🏢</div>
+                        <h3>企业招聘服务</h3>
+                        <p>提供网络招聘、校园招聘、猎头服务及灵活用工解决方案。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3>人才测评与培训</h3>
+                        <p>科学的职业测评体系与专业的职场技能培训，助力个人成长。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>本地化服务团队</h3>
+                        <p>深耕武汉市场，提供面对面咨询与定制化人力资源策略。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门招聘行业</h2>
+                </div>
+                <div class="category-grid">
+                    <a href="#" class="category-item">
+                        <img src="https://picsum.photos/seed/tech/100/100" alt="互联网">
+                        <span>互联网/IT</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <img src="https://picsum.photos/seed/finance/100/100" alt="金融">
+                        <span>金融/银行</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <img src="https://picsum.photos/seed/edu/100/100" alt="教育">
+                        <span>教育/培训</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <img src="https://picsum.photos/seed/market/100/100" alt="市场">
+                        <span>市场营销</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <img src="https://picsum.photos/seed/med/100/100" alt="医疗">
+                        <span>医疗/健康</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <img src="https://picsum.photos/seed/engineer/100/100" alt="工程">
+                        <span>工程/制造</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://picsum.photos/seed/office/600/400" alt="前程无忧武汉分公司办公环境">
+                    </div>
+                    <div class="about-text">
+                        <h2>深耕武汉，服务华中</h2>
+                        <p>前程无忧武汉分公司作为集团在华中地区的重要战略支点，拥有专业的本地化服务团队。我们不仅提供标准化的招聘服务，更注重与企业的深度沟通，了解武汉本土企业的用人特点与文化需求。</p>
+                        <p>通过大数据分析与线下服务相结合，我们帮助企业在激烈的人才竞争中吸引并留住优秀人才，同时为武汉的求职者提供更精准的职业发展指导。</p>
+                        <div class="stat-list">
+                            <div class="stat-item">
+                                <h4>500+</h4>
+                                <p>合作企业</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>10万+</h4>
+                                <p>活跃简历库</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>24h</h4>
+                                <p>在线响应</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="features" style="background: var(--bg-light);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="feature-card" style="text-align: left; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 10px;">如何注册成为求职者？</h3>
+                        <p style="font-size: 14px; color: var(--text-gray);">点击首页右上角的“注册”按钮，填写手机号、验证码及基本信息即可完成注册。注册后即可浏览职位并投递简历。</p>
+                    </div>
+                    <div class="feature-card" style="text-align: left; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 10px;">企业如何发布招聘信息？</h3>
+                        <p style="font-size: 14px; color: var(--text-gray);">企业用户需登录后台，选择“发布职位”或联系我们的客户经理，我们将协助您完成企业认证及职位发布。</p>
+                    </div>
+                    <div class="feature-card" style="text-align: left; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 10px;">武汉分公司提供哪些增值服务？</h3>
+                        <p style="font-size: 14px; color: var(--text-gray);">除了基础招聘服务外，我们还提供高端猎头寻访、薪酬调研、员工培训及企业内训等定制化人力资源解决方案。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-info">
+                    <h4>前程无忧武汉分公司</h4>
+                    <p>致力于成为武汉地区最专业、最可靠的人力资源合作伙伴。</p>
+                    <p>地址：武汉市武昌区中北路86号汉街总部国际A座</p>
+                    <p>电话：027-8888 8888</p>
+                </div>
+                <div class="footer-col">
+                    <h4>求职指南</h4>
+                    <ul>
+                        <li><a href="#">职位搜索</a></li>
+                        <li><a href="#">简历优化</a></li>
+                        <li><a href="#">面试技巧</a></li>
+                        <li><a href="#">职场百科</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>企业服务</h4>
+                    <ul>
+                        <li><a href="#">网络招聘</a></li>
+                        <li><a href="#">校园招聘</a></li>
+                        <li><a href="#">猎头服务</a></li>
+                        <li><a href="#">灵活用工</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 前程无忧武汉分公司 版权所有 | ICP备XXXXXXXX号
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
