@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芬兰之星 - 顶级芬兰设计品牌与北欧生活方式指南</title>
+    <meta name="description" content="芬兰之星官方网站。探索源自芬兰的顶级设计品牌、北欧家居生活理念及创新科技产品。提供设计指南、品牌故事及全球采购服务，为您打造极简、实用且富有美感的现代生活空间。">
+    <meta name="keywords" content="芬兰之星, 芬兰设计, 北欧家居, 芬兰家居品牌, 极简主义, 芬兰生活, 木材家具">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --accent-color: #E67E22;
+            --bg-color: #FDFBF7;
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --font-stack: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/finlandwood/1920/1080.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* Features Strip */
+        .features-strip {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 3rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 5rem 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-img {
+            height: 200px;
+            width: 100%;
+        }
+
+        .category-info {
+            padding: 1.5rem;
+        }
+
+        .category-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .category-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Featured Products */
+        .products {
+            padding: 5rem 0;
+            background-color: #fff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 300px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            box-shadow: 20px 20px 0 var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                box-shadow: 10px 10px 0 var(--accent-color);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">芬兰<span>之星</span></a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#categories">设计分类</a></li>
+                    <li><a href="#products">精选产品</a></li>
+                    <li><a href="#about">品牌故事</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">登录</a>
+                <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">注册</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>源自北欧的纯粹设计美学</h1>
+                <p>芬兰之星致力于将芬兰的自然灵感与现代工艺相结合。我们为您提供最优质的木材家具、极简家居饰品及北欧生活方式解决方案。</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#products" class="btn btn-primary">探索产品</a>
+                    <a href="#about" class="btn btn-outline" style="color: #fff; border-color: #fff;">了解更多</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Strip -->
+        <section class="features-strip">
+            <div class="container features-grid">
+                <div class="feature-item">
+                    <h3>🪵 严选芬兰木材</h3>
+                    <p>100% 进口芬兰白桦与松木</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🛠 匠心工艺</h3>
+                    <p>传统榫卯结构与环保清漆</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🌿 环保承诺</h3>
+                    <p>FSC 认证，可持续生产</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🚚 全球配送</h3>
+                    <p>专业物流，安全送达全球</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="categories">
+            <div class="container">
+                <h2 class="section-title">设计分类</h2>
+                <div class="category-grid">
+                    <article class="category-card">
+                        <img src="https://picsum.photos/seed/furniture/600/400" alt="实木家具" class="category-img">
+                        <div class="category-info">
+                            <h3>实木家具系列</h3>
+                            <p>从餐桌到床榻，每一件家具都承载着芬兰人对自然与舒适的极致追求，坚固耐用且极具美感。</p>
+                            <a href="#" class="btn btn-outline">查看详情</a>
+                        </div>
+                    </article>
+                    <article class="category-card">
+                        <img src="https://picsum.photos/seed/lighting/600/400" alt="北欧灯具" class="category-img">
+                        <div class="category-info">
+                            <h3>北欧灯具系列</h3>
+                            <p>模仿自然光线的柔和照明设计，为您的空间注入温暖与宁静，点亮生活的每一个角落。</p>
+                            <a href="#" class="btn btn-outline">查看详情</a>
+                        </div>
+                    </article>
+                    <article class="category-card">
+                        <img src="https://picsum.photos/seed/decor/600/400" alt="家居装饰" class="category-img">
+                        <div class="category-info">
+                            <h3>家居装饰与配件</h3>
+                            <p>简约的陶瓷、羊毛织物与金属工艺品，用细节点缀生活，展现独特的个人品味。</p>
+                            <a href="#" class="btn btn-outline">查看详情</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="container">
+                <h2 class="section-title">精选产品</h2>
+                <div class="product-grid">
+                    <!-- Product 1 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <span class="badge">热销</span>
+                            <img src="https://picsum.photos/seed/chair/500/600" alt="赫尔辛基扶手椅">
+                        </div>
+                        <div class="product-details">
+                            <div class="product-category">家具</div>
+                            <h3 class="product-title">赫尔辛基扶手椅</h3>
+                            <p style="font-size: 0.9rem; color: #666;">经典弯曲木工艺，人体工学设计。</p>
+                            <div class="product-footer">
+                                <span class="price">¥2,499</span>
+                                <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem;">加入购物车</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/lamp/500/600" alt="北极光落地灯">
+                        </div>
+                        <div class="product-details">
+                            <div class="product-category">灯具</div>
+                            <h3 class="product-title">北极光落地灯</h3>
+                            <p style="font-size: 0.9rem; color: #666;">极简金属框架，温暖漫反射光源。</p>
+                            <div class="product-footer">
+                                <span class="price">¥1,899</span>
+                                <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem;">加入购物车</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <span class="badge" style="background-color: #27ae60;">新品</span>
+                            <img src="https://picsum.photos/seed/vase/500/600" alt="波罗的海陶瓷花瓶">
+                        </div>
+                        <div class="product-details">
+                            <div class="product-category">装饰</div>
+                            <h3 class="product-title">波罗的海陶瓷花瓶</h3>
+                            <p style="font-size: 0.9rem; color: #666;">手工拉胚，独特的冰裂纹路。</p>
+                            <div class="product-footer">
+                                <span class="price">¥459</span>
+                                <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem;">加入购物车</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 4 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/clock/500/600" alt="维京时钟">
+                        </div>
+                        <div class="product-details">
+                            <div class="product-category">配件</div>
+                            <h3 class="product-title">维京极简时钟</h3>
+                            <p style="font-size: 0.9rem; color: #666;">芬兰森林绿配色，静音机芯。</p>
+                            <div class="product-footer">
+                                <span class="price">¥699</span>
+                                <a href="#" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem;">加入购物车</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="btn btn-primary">浏览所有产品</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="https://picsum.photos/seed/factory/600/500" alt="芬兰设计工作室">
+                    </div>
+                    <div class="about-content">
+                        <h2>芬兰之心，设计之本</h2>
+                        <p>芬兰之星成立于2005年，总部位于赫尔辛基。我们相信，好的设计应当是低调的、实用的，并能与使用者的情感产生共鸣。</p>
+                        <p>我们的设计团队由来自阿尔托大学等顶尖院校的专家组成，他们深入研究芬兰的自然景观——从广袤的森林到静谧的湖泊，将这种纯净与宁静融入每一件产品之中。</p>
+                        <p>我们坚持使用环保材料，遵循可持续发展的原则，确保我们的产品不仅美得令人心动，而且对地球负责。</p>
+                        <a href="#" class="btn btn-primary">阅读品牌故事</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="padding: 5rem 0; background-color: #fff;">
+            <div class="container">
+                <h2 class="section-title">常见问题</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            芬兰之星的产品是否支持定制？
+                            <span style="color: var(--accent-color);">+</span>
+                        </summary>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">是的，我们提供部分实木家具的尺寸定制服务。您可以在选购页面选择“定制选项”，或联系我们的客服团队获取详细的定制流程。</p>
+                    </details>
+                    <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            物流配送需要多长时间？
+                            <span style="color: var(--accent-color);">+</span>
+                        </summary>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">国内主要城市通常在订单确认后3-5个工作日内发货。偏远地区可能需要额外2-3天。国际订单根据目的地不同，通常需要7-14个工作日。</p>
+                    </details>
+                    <details style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            家具材质是否环保？
+                            <span style="color: var(--accent-color);">+</span>
+                        </summary>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">我们严格遵守欧盟环保标准，所有木材均经过FSC认证，油漆和胶水均采用低VOC（挥发性有机化合物）环保配方。</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: #fff; margin-bottom: 1rem; display: inline-block;">芬兰<span>之星</span></a>
+                    <p style="color: #bdc3c7; font-size: 0.9rem;">为您甄选来自北欧的顶级设计，让生活回归纯粹与美好。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>购物指南</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">产品分类</a></li>
+                        <li><a href="#">配送政策</a></li>
+                        <li><a href="#">退换货服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>客户服务</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">隐私条款</a></li>
+                        <li><a href="#">服务协议</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>订阅资讯</h4>
+                    <p style="color: #bdc3c7; font-size: 0.9rem; margin-bottom: 1rem;">订阅我们的邮件，获取最新设计资讯与独家优惠。</p>
+                    <div style="display: flex;">
+                        <input type="email" placeholder="您的邮箱" style="padding: 0.5rem; border: none; border-radius: 4px 0 0 4px; width: 100%; outline: none;">
+                        <button style="padding: 0.5rem 1rem; background-color: var(--accent-color); border: none; color: #fff; border-radius: 0 4px 4px 0; cursor: pointer;">订阅</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 芬兰之星 版权所有.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('nav-menu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
